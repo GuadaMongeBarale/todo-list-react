@@ -1,4 +1,8 @@
 .TodoSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     width: calc(100% - 62px);
     height: 40px;
     max-width: 500px;
@@ -13,13 +17,18 @@
     box-shadow: 0px 1px 10px rgba(198, 211, 244, 0.25);
 }
 
-.TodoSearch::placeholder {
+.TodoSearch::placeholder, 
+.TodoSearch p {
     color: var(--sure);
     font-weight: 400;
+}
+.TodoSearch p {
+    text-align: center;
 }
 .TodoSearch:focus {
     outline-color: var(--focus);
 }
+
 
 @media (min-width:640px) {
     .TodoSearch {

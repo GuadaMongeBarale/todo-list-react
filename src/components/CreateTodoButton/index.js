@@ -8,6 +8,7 @@ function CreateTodoButton(props) {
     return (
         <button 
         className='CreateTodoButton'
+        title='Clica para abrir o cerrar al anotador de TODOs'
         onClick={ onClickBtn }
         >+</button>
     )
