@@ -3,8 +3,8 @@ import { TodoContext } from '../../TodoContext';
 import './Counter.css';
 
 function TodoCounter() {
-    const {totalTodos, completedTodos, loading, searchedTodos } = useContext(TodoContext)
-    if (!loading && !searchedTodos.length) {
+    const {totalTodos, completedTodos, loading } = useContext(TodoContext)
+    if (!loading && !totalTodos) {
         return (
             <h2 className='TodoCounter'>Crea tu primer TODO 💪</h2>
         )
