@@ -20,17 +20,20 @@ function TodoForm() {
         <form onSubmit={onSubmit}>
             <label>Escribe tu TODO</label>
             <textarea
+                title='Has click para escribir tu tarea'
                 value={newTodoValue}
                 onChange={onChange}
                 placeholder='Tomar agua'
             />
             <div className='TodoForm-buttonContainer'>
-                <button 
+                <button
+                title='Con un click aquí volverás a la pantalla principal sin guardar información'
                 className='TodoForm-button TodoForm-button--cancel'
                 type='button'
                 onClick={onCancel}
                 >Cancelar</button>
                 <button
+                title='Guardaras en un almacenamiento local'
                 className='TodoForm-button TodoForm-button--add'
                 type='submit'
                 >Añadir</button>

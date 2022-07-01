@@ -16,7 +16,10 @@ function TodoSearch() {
     } 
     else {
         return (
-            <input className='TodoSearch' 
+            <input
+            title='Has click aquí y presiona alguna letra.
+            Debajo aparecerán los TODO que contengan esa letra o palabra.'
+            className='TodoSearch' 
             placeholder="Busca un TODO" 
             value={ search }
             onChange={ onSearchValue }
