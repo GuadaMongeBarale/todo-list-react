@@ -7,7 +7,7 @@ Incluye la función de buscar, marcar como completada y eliminar.
 
 ![todo](./img_readme/todo.png)
 
-## VISITALA :point_right: [AQUÍ](https://GuadaMongeBarale.github.io/TO-DOList-React) :point_left:
+## VISITALA :point_right: [AQUÍ](https://GuadaMongeBarale.github.io/todo-list-react) :point_left:
 
 ---
 --- 
