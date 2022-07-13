@@ -86,6 +86,90 @@ Mira con que poquitas líneas de código se consigue:
 
 * [Buscador ](src/components/TodoSearch/)
 
+***
+***
+## Versión 2 
 
+***
 
+En la segunda versión optimicé el código.
 
+Deje de usar context para usar un **Custom Hook**, ya que al ser una *aplicación pequeña*, createContext no sería indispensable.
+
+Por lo tanto, mejoré la *composición* de la app.
+
+Ella es la encargada de importar hooks y compartirlos con los hijos. De esta manera no es necesario llamar en cada componente al contexto.
+
+```javascript
+function App() {
+    const {
+        error, 
+        loading, 
+        searchedTodos,
+        totalTodos, 
+        completedTodos,  
+        completeTodo, 
+        deleteTodo,
+        search,
+        setSearch, 
+        openModal,
+        setOpenModal,
+        addTodo 
+    } = useTodos()
+    return (
+        <>
+        <TodoCounter        
+            totalTodos={totalTodos}
+            completedTodos={completedTodos}
+            loading={loading}
+        />
+        <TodoSearch
+            search={search}
+            setSearch={setSearch}
+            totalTodos={totalTodos}
+            loading={loading}
+        />
+        <TodoList>
+            {error  && <p>Hubo un error</p>}
+            {loading  && <p>Estamos cargando...</p>}
+            { searchedTodos.map( todo => (
+            <TodoItem 
+                key={todo.text} 
+                text={todo.text} 
+                completed={todo.completed}
+                onComplete={()=>completeTodo(todo.text)}
+                onDeleted={()=>deleteTodo(todo.text)}
+            />
+            ))}
+        </TodoList>
+        {!!openModal && (
+            <Modal>
+                <TodoForm
+                    addTodo={addTodo} 
+                    setOpenModal={setOpenModal}
+                />
+            </Modal>
+        )}
+        
+        <CreateTodoButton
+        setOpenModal={setOpenModal}
+        />
+            
+        </>
+    )
+}
+```
+
+*Cabe destacar que, con un Custom Hook podemos compartir una **misma lógica** para manejar el estado, pero al llamarlo no estaremos compartiendo el mismo estado, sino creando **diferentes estados** que funcionan igual.*
+
+***
+### Sincronización
+
+***
+![actualizar](./img_readme/actualizar.png)
+
+La aplicación escuha si en otra ventana se produjo un cambio en el almacenamiento de TODOs y avisa para que el usuario actualice su vista.
+
+* [ Hook ](src/hooks/useStorageAlert.js) 
+
+* [ Componente ](src/components/ChangeAlert/index.js) 

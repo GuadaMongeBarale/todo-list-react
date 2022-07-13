@@ -4,8 +4,10 @@ import './List.css'
 function TodoList(props) {
     return (
         <section className='TodoList'>
+        {props.error && props.onError() }
+        {props.loading && props.onLoading()}
             <ul>
-                {props.children}
+                {!props.loading && props.searchedTodos.map(props.render)}
             </ul>
         </section>
     )
